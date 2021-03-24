@@ -17,15 +17,27 @@ public class Book implements Serializable {
     private String bookName;
     private String time;
     private String studentName;
+    private String code;
+
+
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     @Override
     public String toString() {
-        return "book{" +
+        return "Book{" +
                 "id=" + id +
                 ", amount=" + amount +
                 ", bookName='" + bookName + '\'' +
                 ", time='" + time + '\'' +
                 ", studentName='" + studentName + '\'' +
+                ", code='" + code + '\'' +
                 '}';
     }
 

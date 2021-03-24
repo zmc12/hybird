@@ -1,6 +1,7 @@
 package com.jsut.hybird.pojo;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
 
@@ -19,6 +20,16 @@ public class Sign implements Serializable {
     private String stuation;
     private String temperature;
 
+    private MultipartFile picture;
+
+    public MultipartFile getPicture() {
+        return picture;
+    }
+
+    public void setPicture(MultipartFile picture) {
+        this.picture = picture;
+    }
+
     @Override
     public String toString() {
         return "Sign{" +
@@ -28,6 +39,7 @@ public class Sign implements Serializable {
                 ", method='" + method + '\'' +
                 ", stuation='" + stuation + '\'' +
                 ", temperature='" + temperature + '\'' +
+                ", picture=" + picture +
                 '}';
     }
 

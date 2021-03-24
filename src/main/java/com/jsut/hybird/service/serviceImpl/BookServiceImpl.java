@@ -46,4 +46,9 @@ public class BookServiceImpl implements BookService {
         bookMapper.insertT(book);
         return bookMapper.selectAll();
     }
+
+    @Override
+    public Book selectCode(String code) {
+        return bookMapper.selectCode(code);
+    }
 }

@@ -20,6 +20,9 @@
     </select>
 
 
+    <select id="selectCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from book where code=#{code};
+    </select>
     <insert id="insertT" parameterType="com.jsut.hybird.pojo.Book">
         insert into book(book_name,amount) values (#{bookName},#{amount});
     </insert>

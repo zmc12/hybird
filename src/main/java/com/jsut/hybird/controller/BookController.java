@@ -2,6 +2,7 @@ package com.jsut.hybird.controller;
 
 import com.jsut.hybird.pojo.Book;
 import com.jsut.hybird.pojo.Dom;
+import com.jsut.hybird.pojo.ResultCode;
 import com.jsut.hybird.service.BookService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,18 @@ public class BookController {
 
 
     @ResponseBody
+    @PostMapping("/selectCode")
+    public ResultCode selectCode(@RequestParam("code")String code){
+        Book book = bookService.selectCode(code);
+        if(book!=null){
+            return new ResultCode(200,book.getBookName());
+        }else {
+            return new ResultCode(400,"识别失败");
+        }
+
+    }
+
+    @ResponseBody
     @GetMapping("/selectById")
     public Book selectById(@RequestParam("id")Integer id){
         Book book = bookService.selectById(id);
@@ -39,6 +52,7 @@ public class BookController {
         List<Book> books = bookService.insertT(book);
         System.out.println(book.toString());
         return books;
+
     }
 
     @ResponseBody

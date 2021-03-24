@@ -7,4 +7,7 @@ import com.jsut.hybird.pojo.Book;
  * @Date: 2021/3/3 12:09
  */
 public interface BookService extends BaseService<Book> {
+
+
+    public Book selectCode(String code);
 }
