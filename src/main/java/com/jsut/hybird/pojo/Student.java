@@ -22,7 +22,7 @@ public class Student implements Serializable {
 
     @Override
     public String toString() {
-        return "userStudent{" +
+        return "UserStudent{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", userName='" + userName + '\'' +

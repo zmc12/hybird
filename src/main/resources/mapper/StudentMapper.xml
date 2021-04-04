@@ -45,4 +45,9 @@
     <select id="selectByUser"  resultMap="BaseResultMap">
         select  <include refid="Base_Column_List" /> from student where user_name=#{userName} and password=#{password}
     </select>
+
+
+    <select id="selectByNumber" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select  <include refid="Base_Column_List" /> from student where user_name=#{number};
+    </select>
 </mapper>

@@ -2,7 +2,7 @@ package com.jsut.hybird.controller;
 
 import com.jsut.hybird.pojo.Absent;
 import com.jsut.hybird.service.AbsentService;
-import com.jsut.hybird.utils.userStudent;
+import com.jsut.hybird.utils.UserStudent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -69,7 +69,7 @@ public class AbsentController {
     @ResponseBody
     @GetMapping("/selectByName")
     public List<Absent> selectByName(){
-        List<Absent> absents = absentService.selectByName(userStudent.Name);
+        List<Absent> absents = absentService.selectByName(UserStudent.Name);
         return absents;
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
  * @Date: 2021/3/3 15:38
  */
 @EnableAutoConfiguration
-public class userStudent {
+public class UserStudent {
     public static String COLLEGE;
 
     public static String Name;

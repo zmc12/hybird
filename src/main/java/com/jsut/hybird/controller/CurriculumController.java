@@ -1,9 +1,7 @@
 package com.jsut.hybird.controller;
 
-import com.jsut.hybird.pojo.Absent;
 import com.jsut.hybird.pojo.Curriculum;
 import com.jsut.hybird.service.CurriculumService;
-import com.jsut.hybird.utils.userStudent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

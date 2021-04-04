@@ -10,7 +10,6 @@ import java.io.Serializable;
  * @date 2021/1/20 16:20
  */
 @EnableAutoConfiguration
-
 public class Sign implements Serializable {
 
     private Integer id;
@@ -19,6 +18,13 @@ public class Sign implements Serializable {
     private String method;
     private String stuation;
     private String temperature;
+
+
+    private String smoke;
+    private String fire;
+    private String wet;
+
+
 
     private MultipartFile picture;
 
@@ -30,6 +36,31 @@ public class Sign implements Serializable {
         this.picture = picture;
     }
 
+
+    public String getSmoke() {
+        return smoke;
+    }
+
+    public void setSmoke(String smoke) {
+        this.smoke = smoke;
+    }
+
+    public String getFire() {
+        return fire;
+    }
+
+    public void setFire(String fire) {
+        this.fire = fire;
+    }
+
+    public String getWet() {
+        return wet;
+    }
+
+    public void setWet(String wet) {
+        this.wet = wet;
+    }
+
     @Override
     public String toString() {
         return "Sign{" +
@@ -39,6 +70,9 @@ public class Sign implements Serializable {
                 ", method='" + method + '\'' +
                 ", stuation='" + stuation + '\'' +
                 ", temperature='" + temperature + '\'' +
+                ", smoke='" + smoke + '\'' +
+                ", fire='" + fire + '\'' +
+                ", wet='" + wet + '\'' +
                 ", picture=" + picture +
                 '}';
     }

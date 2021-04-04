@@ -2,7 +2,9 @@ package com.jsut.hybird.controller;
 
 import com.jsut.hybird.pojo.ResultCode;
 import com.jsut.hybird.pojo.Sign;
+import com.jsut.hybird.pojo.Student;
 import com.jsut.hybird.service.SignService;
+import com.jsut.hybird.service.StudentService;
 import com.jsut.hybird.utils.ViapiFileUtilAdvance;
 import com.jsut.hybird.utils.MultipartFileToFile;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +30,9 @@ import java.util.List;
 public class SignController {
     @Autowired
     private SignService signService;
+
+    @Autowired
+    private StudentService studentService;
 
     @ResponseBody
     @GetMapping("/selectById")
@@ -70,17 +75,27 @@ public class SignController {
             e.printStackTrace();
             return new ResultCode(400,"识别失败");
         }
+    }
 
+    @ResponseBody
+    @PostMapping("/insertFinger")
+    public ResultCode insertFinger(Sign sign){
+        sign.setMethod("指纹签到");
+        sign.setStuation("已签到");
+        System.out.println(sign.toString());
+        List<Sign> signs = signService.insertT(sign);
+        Student student = studentService.selectByNumber(sign.getName());
+        return new ResultCode(200,student.getName()+"指纹签到成功");
 
     }
 
     @ResponseBody
     @PostMapping("/insert")
-    public List<Sign> insert(Sign sign){
+    public ResultCode insert(Sign sign){
         sign.setStuation("已签到");
         List<Sign> signs = signService.insertT(sign);
         System.out.println(signs.toString());
-        return signs;
+        return new ResultCode(200,"签到成功");
 
     }
 

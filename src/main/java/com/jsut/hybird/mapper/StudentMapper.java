@@ -13,4 +13,6 @@ import org.apache.ibatis.annotations.Param;
 public interface StudentMapper extends BaseMapper<Student> {
 
     Student selectByUser(@Param("userName") String user,@Param("password") String password);
+
+    public Student selectByNumber(String number);
 }

@@ -56,4 +56,9 @@ public class StudentServiceImpl implements StudentService {
     public Student selectByUser(String user, String password) {
         return studentMapper.selectByUser(user,password);
     }
+
+    @Override
+    public Student selectByNumber(String number) {
+        return studentMapper.selectByNumber(number);
+    }
 }

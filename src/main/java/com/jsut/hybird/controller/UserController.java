@@ -5,8 +5,8 @@ import com.jsut.hybird.pojo.Student;
 import com.jsut.hybird.pojo.Teacher;
 import com.jsut.hybird.service.StudentService;
 import com.jsut.hybird.service.TeacherService;
-import com.jsut.hybird.utils.userStudent;
-import com.jsut.hybird.utils.userTeacher;
+import com.jsut.hybird.utils.UserStudent;
+import com.jsut.hybird.utils.UserTeacher;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -40,8 +40,8 @@ public class UserController {
         if("".equals(teacher) || teacher==null){
             return new ResultCode(400,"登陆失败");
         }else {
-            userTeacher.COLLEGE=teacher.getCollege();
-            userTeacher.Name=teacher.getName();
+            UserTeacher.COLLEGE=teacher.getCollege();
+            UserTeacher.Name=teacher.getName();
             return new ResultCode(200,"登陆成功");
         }
 
@@ -57,8 +57,8 @@ public class UserController {
         if("".equals(student) || student==null){
             return new ResultCode(400,"登陆失败");
         }else {
-            userStudent.COLLEGE=student.getCollege();
-            userStudent.Name=student.getName();
+            UserStudent.COLLEGE=student.getCollege();
+            UserStudent.Name=student.getName();
             return new ResultCode(200,"登陆成功");
         }
 

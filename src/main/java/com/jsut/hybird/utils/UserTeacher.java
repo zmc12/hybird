@@ -10,7 +10,7 @@ import java.io.Serializable;
  */
 @EnableAutoConfiguration
 
-public class userTeacher implements Serializable {
+public class UserTeacher implements Serializable {
 
     public static String COLLEGE;
 

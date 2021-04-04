@@ -8,4 +8,7 @@ import com.jsut.hybird.pojo.Student;
  */
 public interface StudentService extends BaseService<Student> {
     Student selectByUser(String user, String password);
+
+
+    public Student selectByNumber(String number);
 }
