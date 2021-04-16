@@ -1,6 +1,9 @@
 package com.jsut.hybird.service;
 
 import com.jsut.hybird.pojo.Book;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @Author: ZhangMinCong
@@ -10,4 +13,10 @@ public interface BookService extends BaseService<Book> {
 
 
     public Book selectCode(String code);
+
+
+    void updateTime(String bookName,  String studentName,String time);
+
+
+    List<Book> selectByName(String bookName);
 }

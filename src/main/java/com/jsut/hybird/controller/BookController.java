@@ -4,12 +4,14 @@ import com.jsut.hybird.pojo.Book;
 import com.jsut.hybird.pojo.Dom;
 import com.jsut.hybird.pojo.ResultCode;
 import com.jsut.hybird.service.BookService;
+import com.jsut.hybird.utils.Time;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -66,6 +68,7 @@ public class BookController {
     @ResponseBody
     @PutMapping("/updateById")
     public List<Book> updateById(Book book){
+        System.out.println(book.toString());
         List<Book> books = bookService.updateById(book);
         return books;
     }
@@ -78,4 +81,32 @@ public class BookController {
 
         return books;
     }
+
+
+
+    @ResponseBody
+    @GetMapping("/selectBroswer")
+    public List<Book>  selectBroswer(@RequestParam("bookName")String bookName){
+
+        List<Book> books=bookService.selectByName(bookName);
+        return books;
+    }
+
+
+    @ResponseBody
+    @PutMapping("/updateTime")
+    public ResultCode updateTime(@RequestParam("bookName")String bookName,@RequestParam("studentName")String studentName,@RequestParam("time")String time){
+        String newTime = new String();
+        try {
+            newTime = Time.subMonth(time);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        time=newTime;
+        bookService.updateTime(bookName,studentName,time);
+        return new ResultCode(200,"已续期一个月");
+
+    }
+
 }

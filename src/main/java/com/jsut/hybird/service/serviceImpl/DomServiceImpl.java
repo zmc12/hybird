@@ -52,4 +52,9 @@ public class DomServiceImpl implements DomService {
 
         return doms;
     }
+
+    @Override
+    public List<Dom> selectByGrade(String grade, String term) {
+        return domMapper.selectByGrade(grade,term);
+    }
 }

@@ -51,4 +51,16 @@ public class BookServiceImpl implements BookService {
     public Book selectCode(String code) {
         return bookMapper.selectCode(code);
     }
+
+    @Override
+    public void updateTime(String bookName, String studentName, String time) {
+        bookMapper.updateTime(bookName,studentName,time);
+    }
+
+    @Override
+    public List<Book> selectByName(String bookName) {
+        return bookMapper.selectByName(bookName);
+    }
+
+
 }

@@ -65,4 +65,12 @@ public class DomController {
 
         return doms;
     }
+
+
+    @ResponseBody
+    @GetMapping("/selectByGrade")
+    public List<Dom> selectByGrade(@RequestParam("grade")String grade,@RequestParam("term")String term){
+        List<Dom> doms = domService.selectByGrade(grade, term);
+        return doms;
+    }
 }
