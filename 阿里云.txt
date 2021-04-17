@@ -1,0 +1,2 @@
+   String accessKey = "LTAI4G7sRgYWRcXuTE3S2gWM";    //ÄúµÄAccessKeyID
+     String accessKeySecret = "8kKcv4f7YiCYZerteurgYvZCpHyJ7k";   //ÄúµÄAccessKeySecret

@@ -30,8 +30,8 @@ public class ViapiFileUtilAdvance {
 
     public static String read(InputStream inputStream) throws Exception {
 
-        String accessKey = "LTAI4G7sRgYWRcXuTE3S2gWM";    //您的AccessKeyID
-        String accessKeySecret = "8kKcv4f7YiCYZerteurgYvZCpHyJ7k";   //您的AccessKeySecret
+        String accessKey = "";    //您的AccessKeyID
+        String accessKeySecret = "";   //您的AccessKeySecret
         String regionId = "cn-shanghai";
         //String file = "C:/Users/10409/Desktop/2.jpg"; //或者本地上传
         //String file = "https://img.alicdn.com/tfs/TB1S0DjC4v1gK0jSZFFXXb0sXXa-692-440.jpg";
