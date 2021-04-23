@@ -14,7 +14,7 @@ public class Sign implements Serializable {
 
     private Integer id;
     private String name;
-    private String location;
+    //private String location;
     private String method;
     private String stuation;
     private String temperature;
@@ -23,8 +23,31 @@ public class Sign implements Serializable {
     private String smoke;
     private String fire;
     private String wet;
+    private String time;
 
+    @Override
+    public String toString() {
+        return "Sign{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", method='" + method + '\'' +
+                ", stuation='" + stuation + '\'' +
+                ", temperature='" + temperature + '\'' +
+                ", smoke='" + smoke + '\'' +
+                ", fire='" + fire + '\'' +
+                ", wet='" + wet + '\'' +
+                ", time='" + time + '\'' +
+                ", picture=" + picture +
+                '}';
+    }
 
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     private MultipartFile picture;
 
@@ -61,21 +84,7 @@ public class Sign implements Serializable {
         this.wet = wet;
     }
 
-    @Override
-    public String toString() {
-        return "Sign{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", location='" + location + '\'' +
-                ", method='" + method + '\'' +
-                ", stuation='" + stuation + '\'' +
-                ", temperature='" + temperature + '\'' +
-                ", smoke='" + smoke + '\'' +
-                ", fire='" + fire + '\'' +
-                ", wet='" + wet + '\'' +
-                ", picture=" + picture +
-                '}';
-    }
+
 
     public String getTemperature() {
         return temperature;
@@ -101,13 +110,7 @@ public class Sign implements Serializable {
         this.name = name;
     }
 
-    public String getLocation() {
-        return location;
-    }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
 
     public String getMethod() {
         return method;
