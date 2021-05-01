@@ -46,6 +46,8 @@
         select * from absent where name=#{name};
     </select>
 
-
+    <select id="selectByGrade" parameterType="java.lang.String"  resultMap="BaseResultMap">
+        select  a.* from absent a,(select name from student where grade=#{grade}) b where a.name=b.name and  (result="未审批" or result="批准") order by id asc;
+    </select>
 
 </mapper>

@@ -15,4 +15,6 @@ import java.util.List;
 public interface AbsentMapper extends BaseMapper<Absent> {
 
     public List<Absent> selectByName(String name);
+
+    List<Absent> selectByGrade(String grade);
 }

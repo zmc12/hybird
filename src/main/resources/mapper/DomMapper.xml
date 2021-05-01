@@ -26,7 +26,7 @@
 
 
     <insert id="insertT" parameterType="com.jsut.hybird.pojo.Dom">
-        insert into dom(number,score,students) values (#{number},#{score},#{students});
+        insert into dom(number,score,students,fix,process,grade,term) values (#{number},#{score},#{students},#{fix},#{process},#{grade},#{term});
     </insert>
 
     <delete id="deleteById" parameterType="java.lang.Integer">
@@ -34,7 +34,7 @@
     </delete>
 
     <update id="updateById" parameterType="com.jsut.hybird.pojo.Dom">
-        update  dom set number=#{number},score=#{score},students=#{students} where id=#{id};
+        update  dom set number=#{number},score=#{score},students=#{students},fix=#{fix},process=#{process},grade=#{grade},term=#{term} where id=#{id};
     </update>
 
     <select id="selectById" resultMap="BaseResultMap">

@@ -85,7 +85,7 @@ public class SignController {
         System.out.println(sign.toString());
         List<Sign> signs = signService.insertT(sign);
         Student student = studentService.selectByNumber(sign.getName());
-        return new ResultCode(200,student.getName()+"指纹签到成功");
+        return new ResultCode(200,student.getName()+" sign success");
 
     }
 
@@ -137,4 +137,13 @@ public class SignController {
         List<Sign> signs = signService.selectNoSign();
         return signs;
     }
+
+    @ResponseBody
+    @GetMapping("/selectByGrade")
+    public List<Sign> select(@RequestParam("grade")String grade,@RequestParam("time")String time){
+        List<Sign> signs = signService.selectByGrade(grade, time);
+
+        return signs;
+    }
+
 }

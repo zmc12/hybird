@@ -50,4 +50,9 @@
     <select id="selectByNumber" resultMap="BaseResultMap" parameterType="java.lang.String">
         select  <include refid="Base_Column_List" /> from student where user_name=#{number};
     </select>
+
+
+    <select id="selectByGrade" parameterType="java.lang.String"  resultMap="BaseResultMap">
+        select  <include refid="Base_Column_List" /> from student where grade=#{grade};
+    </select>
 </mapper>

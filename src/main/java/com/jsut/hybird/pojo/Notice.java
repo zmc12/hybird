@@ -3,6 +3,7 @@ package com.jsut.hybird.pojo;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  * @author ZhangMinCong
@@ -15,9 +16,10 @@ public class Notice implements Serializable {
     private Integer id;
     private String text;
     private String grade;
-    private String situation;
     private String name;
+    private String title;
 
+    private String[] grades;
 
     @Override
     public String toString() {
@@ -25,9 +27,26 @@ public class Notice implements Serializable {
                 "id=" + id +
                 ", text='" + text + '\'' +
                 ", grade='" + grade + '\'' +
-                ", situation='" + situation + '\'' +
                 ", name='" + name + '\'' +
+                ", title='" + title + '\'' +
+                ", grades=" + Arrays.toString(grades) +
                 '}';
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String[] getGrades() {
+        return grades;
+    }
+
+    public void setGrades(String[] grades) {
+        this.grades = grades;
     }
 
     public String getName() {
@@ -60,13 +79,5 @@ public class Notice implements Serializable {
 
     public void setGrade(String grade) {
         this.grade = grade;
-    }
-
-    public String getSituation() {
-        return situation;
-    }
-
-    public void setSituation(String situation) {
-        this.situation = situation;
     }
 }

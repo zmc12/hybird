@@ -52,4 +52,9 @@ public class AbsentServiceImpl implements AbsentService {
     public List<Absent> selectByName(String name) {
         return absentMapper.selectByName(name);
     }
+
+    @Override
+    public List<Absent> selectByGrade(String grade) {
+        return absentMapper.selectByGrade(grade);
+    }
 }

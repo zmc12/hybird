@@ -72,4 +72,11 @@ public class AbsentController {
         List<Absent> absents = absentService.selectByName(UserStudent.Name);
         return absents;
     }
+
+    @ResponseBody
+    @GetMapping("/selectByGrade")
+    public List<Absent> select(@RequestParam("grade")String grade){
+        List<Absent> absents = absentService.selectByGrade(grade);
+        return absents;
+    }
 }

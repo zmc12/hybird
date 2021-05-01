@@ -7,8 +7,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -34,9 +39,43 @@ public class MarketController {
 
     @ResponseBody
     @PostMapping("/insert")
-    public List<Market> insert(Market market){
+    public List<Market> insert(Market market) throws IOException {
+        MultipartFile imgFile = market.getFile();
+        if(market.getFile()!=null){
+            // 拿到文件名
+            String filename = imgFile.getOriginalFilename();
+
+            String staticPath = ClassUtils.getDefaultClassLoader().getResource("static").getPath();
+//        // 存放上传图片的文件夹
+//        File fileDir = UploadUtils.getImgDirFile();
+//        // 输出文件夹绝对路径  -- 这里的绝对路径是相当于当前项目的路径而不是“容器”路径
+//        System.out.println(fileDir.getAbsolutePath());
+
+            // 构建真实的文件路径
+            File newFile = new File(staticPath+"/images"+ File.separator + filename);
+            System.out.println(newFile.getAbsolutePath());
+
+            try {
+
+
+                // 上传图片到 -》 “绝对路径”
+                imgFile.transferTo(newFile);
+                market.setPath(filename);
+
+
+            } catch (IOException e) {
+
+
+                e.printStackTrace();
+            }
+
+
+        }
+
+
+
         List<Market> markets = marketService.insertT(market);
-        System.out.println(market.toString());
+
         return markets;
     }
 

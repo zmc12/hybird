@@ -55,4 +55,9 @@ public class SignServiceImpl implements SignService {
     public List<Sign> selectNoSign() {
         return signMapper.selectNoSign();
     }
+
+    @Override
+    public List<Sign> selectByGrade(String grade, String time) {
+        return signMapper.selectByGrade(grade,time);
+    }
 }
