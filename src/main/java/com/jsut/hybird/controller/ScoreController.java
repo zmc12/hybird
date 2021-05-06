@@ -43,13 +43,6 @@ public class ScoreController {
         return score;
     }
 
-//    @ResponseBody
-//    @PostMapping("/insert")
-//    public List<Score> insert(Score score){
-//        List<Score> scores = scoreService.insertT(score);
-//        System.out.println(score.toString());
-//        return scores;
-//    }
 
     @ResponseBody
     @GetMapping("/selectAll")
@@ -76,7 +69,7 @@ public class ScoreController {
     }
 
     @ResponseBody
-    @GetMapping("/selectByGrade")
+    @GetMapping("/selectStudent")
     public List<Student> selectByGrade(@RequestParam("grade")String grade){
 
         List<Student> students=studentService.selectByGrade(grade);
@@ -85,21 +78,34 @@ public class ScoreController {
 
     @ResponseBody
     @PostMapping("/insert")
-    public ResultCode insert(@RequestParam("scores") String scores) throws IOException {
+    public ResultCode insert(List<Score> scores) throws IOException {
+        for(Score scoreList:scores){
+            if(scoreService.ifHas(scoreList) == null){
+                scoreService.insertT(scoreList);
 
-        ObjectMapper mapper = new ObjectMapper();
-        JavaType jt = mapper.getTypeFactory().constructParametricType(ArrayList.class, Score.class);
-        List<Score> sc =  (List<Score>)mapper.readValue(scores, jt);
-        for (int i = 0; i < sc.size(); i++) {
-
-
-            scoreService.insertT(sc.get(i));
-
-
-
+            }else{
+                scoreService.updateById(scoreList);
+            }
         }
 
-
         return new ResultCode(200,"保存成绩成功");
+    }
+
+
+    @ResponseBody
+    @GetMapping("/selectScore")
+    public List<Score> selectScore(@RequestParam("grade")String grade,@RequestParam("subject")String subject){
+
+        List<Score> scores=scoreService.selectByGrade(grade,subject);
+        return scores;
+    }
+
+
+    @ResponseBody
+    @GetMapping("/selectSubject")
+    public List<Score> selectScore(){
+
+        List<Score> scoreList = scoreService.selectSubject();
+        return scoreList;
     }
 }
