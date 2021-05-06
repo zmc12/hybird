@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -68,8 +70,9 @@ public class AbsentController {
 
     @ResponseBody
     @GetMapping("/selectByName")
-    public List<Absent> selectByName(){
-        List<Absent> absents = absentService.selectByName(UserStudent.Name);
+    public List<Absent> selectByName(HttpServletRequest request){
+        Cookie[] cookies = request.getCookies();
+        List<Absent> absents = absentService.selectByName(cookies[0].getValue());
         return absents;
     }
 

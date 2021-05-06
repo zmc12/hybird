@@ -16,4 +16,6 @@ public interface ScoreService extends BaseService<Score> {
     List<Score> selectSubject();
 
     List<Score> selectByGrade(String grade, String subject);
+
+    List<Score> selectByName(String name);
 }

@@ -50,4 +50,8 @@
         select  a.* from score a,(select name from student where grade=#{grade}) b where a.name=b.name and  subject=#{subject} order by id asc;
     </select>
 
+
+    <select id="selectByName" parameterType="java.lang.String"  resultMap="BaseResultMap">
+        select * from score where name=#{name};
+    </select>
 </mapper>

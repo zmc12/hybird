@@ -67,4 +67,9 @@ public class ScoreServiceImpl implements ScoreService {
     public List<Score> selectByGrade(String grade, String subject) {
         return scoreMapper.selectByGrade(grade,subject);
     }
+
+    @Override
+    public List<Score> selectByName(String name) {
+        return selectByName(name);
+    }
 }

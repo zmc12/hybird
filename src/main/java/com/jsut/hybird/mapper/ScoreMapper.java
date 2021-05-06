@@ -19,4 +19,6 @@ public interface ScoreMapper extends BaseMapper<Score> {
     List<Score> selectSubject();
 
     List<Score> selectByGrade(@Param("grade") String grade, @Param("subject") String subject);
+
+    List<Score> selectByName(String name);
 }

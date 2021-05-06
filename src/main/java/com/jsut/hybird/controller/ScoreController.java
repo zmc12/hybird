@@ -15,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +80,7 @@ public class ScoreController {
 
     @ResponseBody
     @PostMapping("/insert")
-    public ResultCode insert(List<Score> scores) throws IOException {
+    public ResultCode insert(List<Score> scores)  {
         for(Score scoreList:scores){
             if(scoreService.ifHas(scoreList) == null){
                 scoreService.insertT(scoreList);
@@ -107,5 +109,13 @@ public class ScoreController {
 
         List<Score> scoreList = scoreService.selectSubject();
         return scoreList;
+    }
+
+    @ResponseBody
+    @GetMapping("/selectByName")
+    public List<Score> selectByName(HttpServletRequest request){
+        Cookie[] cookies = request.getCookies();
+        List<Score> scores = scoreService.selectByName(cookies[0].getValue());
+        return scores;
     }
 }

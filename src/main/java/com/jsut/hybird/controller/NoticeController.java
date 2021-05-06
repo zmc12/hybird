@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -108,8 +110,9 @@ public class NoticeController {
 
     @ResponseBody
     @PutMapping("/updateById")
-    public List<Notice> update(Notice notice){
-        notice.setName(UserTeacher.Name);
+    public List<Notice> update(Notice notice, HttpServletRequest request){
+        Cookie[] cookies = request.getCookies();
+        notice.setName(cookies[0].getValue());
         System.out.println(notice.toString());
         List<Notice> notices = noticeService.updateById(notice);
 
@@ -120,9 +123,10 @@ public class NoticeController {
 
     @ResponseBody
     @PostMapping("/insert")
-    public List<Notice> insert(Notice notice){
+    public List<Notice> insert(Notice notice,HttpServletRequest request){
+        Cookie[] cookies = request.getCookies();
         for(int i=0;i<notice.getGrades().length;i++){
-            notice.setName(UserTeacher.Name);
+            notice.setName(cookies[0].getValue());
             notice.setGrade(notice.getGrades()[i]);
             noticeService.insertT(notice);
             Integer id = notice.getId();
