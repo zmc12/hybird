@@ -1,5 +1,7 @@
 package com.jsut.hybird.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import java.io.Serializable;
@@ -9,15 +11,23 @@ import java.io.Serializable;
  * @date 2021/1/20 16:00
  */
 @EnableAutoConfiguration
-
+@ApiModel(value = "请假类")
 public class Absent implements Serializable {
 
+
     private Integer id;
+
+    @ApiModelProperty(value = "学生姓名")
     private String name;
+    @ApiModelProperty(value = "请假理由")
     private String reason;
+    @ApiModelProperty(value = "开始时间")
     private String startTime;
+    @ApiModelProperty(value = "接收时间")
     private String endTime;
+    @ApiModelProperty(value = "审批结果")
     private String result;
+    @ApiModelProperty(value = "教师批复")
     private String reply;
 
     @Override

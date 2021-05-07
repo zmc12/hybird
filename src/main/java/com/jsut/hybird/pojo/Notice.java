@@ -1,5 +1,7 @@
 package com.jsut.hybird.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import java.io.Serializable;
@@ -10,15 +12,20 @@ import java.util.Arrays;
  * @date 2021/1/20 16:16
  */
 @EnableAutoConfiguration
-
+@ApiModel(value = "通知类")
 public class Notice implements Serializable {
 
     private Integer id;
+    @ApiModelProperty(value = "通知内容")
     private String text;
+    @ApiModelProperty(hidden = true)
     private String grade;
+    @ApiModelProperty(value = "发布人姓名")
     private String name;
+    @ApiModelProperty(value = "通知标题")
     private String title;
 
+    @ApiModelProperty(value = "接收班级")
     private String[] grades;
 
     @Override

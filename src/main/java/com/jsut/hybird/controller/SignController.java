@@ -7,6 +7,8 @@ import com.jsut.hybird.service.SignService;
 import com.jsut.hybird.service.StudentService;
 import com.jsut.hybird.utils.ViapiFileUtilAdvance;
 import com.jsut.hybird.utils.MultipartFileToFile;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -22,6 +24,8 @@ import java.util.List;
  * @Date: 2021/3/4 13:44
  */
 
+
+@Api(value = "签到管理")
 @Slf4j
 @Controller
 @EnableAutoConfiguration
@@ -34,12 +38,15 @@ public class SignController {
     @Autowired
     private StudentService studentService;
 
+
+    @ApiOperation(value = "查询签到")
     @ResponseBody
     @GetMapping("/selectById")
     public Sign selectById(@RequestParam("id")Integer id){
         Sign sign = signService.selectById(id);
         return sign;
     }
+
 
     @ResponseBody
     @PostMapping("/insertFace")
@@ -77,6 +84,7 @@ public class SignController {
         }
     }
 
+
     @ResponseBody
     @PostMapping("/insertFinger")
     public ResultCode insertFinger(Sign sign){
@@ -89,6 +97,7 @@ public class SignController {
 
     }
 
+    @ApiOperation(value = "学生签到")
     @ResponseBody
     @PostMapping("/insert")
     public ResultCode insert(Sign sign){
@@ -99,6 +108,7 @@ public class SignController {
 
     }
 
+    @ApiOperation(value = "查询所有签到")
     @ResponseBody
     @GetMapping("/selectAll")
     public List<Sign> selectAll(){
@@ -107,6 +117,7 @@ public class SignController {
         return signs;
     }
 
+    @ApiOperation(value = "更新签到")
     @ResponseBody
     @PutMapping("/updateById")
     public List<Sign> updateById(Sign sign){
@@ -115,6 +126,7 @@ public class SignController {
     }
 
 
+    @ApiOperation(value = "删除签到")
     @ResponseBody
     @DeleteMapping("/deleteById")
     public List<Sign> deleteById(@RequestParam("id") Integer id){
@@ -123,6 +135,7 @@ public class SignController {
         return signs;
     }
 
+    @ApiOperation(value = "查询已签到")
     @ResponseBody
     @GetMapping("/selectSign")
     public List<Sign> selectSign(){
@@ -130,6 +143,7 @@ public class SignController {
         return signs;
     }
 
+    @ApiOperation(value = "查询未签到")
     @ResponseBody
     @GetMapping("/selectNoSign")
     public List<Sign> selectNoSign(){
@@ -138,6 +152,7 @@ public class SignController {
         return signs;
     }
 
+    @ApiOperation(value = "根据grade、time查询签到信息")
     @ResponseBody
     @GetMapping("/selectByGrade")
     public List<Sign> select(@RequestParam("grade")String grade,@RequestParam("time")String time){

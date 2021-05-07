@@ -7,6 +7,8 @@ import com.jsut.hybird.service.StudentService;
 import com.jsut.hybird.service.TeacherService;
 import com.jsut.hybird.utils.UserStudent;
 import com.jsut.hybird.utils.UserTeacher;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -20,6 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  * @Author: ZhangMinCong
  * @Date: 2021/3/3 15:15
  */
+
+@Api(value = "登陆管理")
 @EnableAutoConfiguration
 @Controller
 @RequestMapping("/login")
@@ -34,6 +38,7 @@ public class UserController {
     private TeacherService teacherService;
 
 
+    @ApiOperation(value = "教师登陆")
     @ResponseBody
     @PostMapping("/teacher")
     public ResultCode login1(@RequestParam("user")String user, @RequestParam("password")String password, HttpServletResponse response){
@@ -63,6 +68,7 @@ public class UserController {
 
 
 
+    @ApiOperation(value = "学生登陆")
     @ResponseBody
     @PostMapping("/student")
     public ResultCode login2(@RequestParam("user")String user, @RequestParam("password")String password,HttpServletResponse response){

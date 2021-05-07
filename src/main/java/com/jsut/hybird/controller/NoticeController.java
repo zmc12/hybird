@@ -5,6 +5,8 @@ import com.jsut.hybird.service.KnowService;
 import com.jsut.hybird.service.NoticeService;
 import com.jsut.hybird.service.StudentService;
 import com.jsut.hybird.utils.UserTeacher;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -21,7 +23,7 @@ import java.util.List;
  * @Date: 2021/3/3 18:46
  */
 
-
+@Api(value = "通知管理")
 @Slf4j
 @Controller
 @EnableAutoConfiguration
@@ -67,6 +69,7 @@ public class NoticeController {
 //        return notices;
 //    }
 
+    @ApiOperation(value = "确认通知")
     @ResponseBody
     @PutMapping("/updateY")
     public List<Notice> updateY(@RequestParam("id") Integer id){
@@ -74,6 +77,7 @@ public class NoticeController {
         return notices;
     }
 
+    @ApiOperation(value = "查询所有通知")
     @ResponseBody
     @GetMapping("/selectAll")
     public List<Notice> selectAll(){
@@ -82,6 +86,7 @@ public class NoticeController {
         return notices;
     }
 
+    @ApiOperation(value = "查询通知")
     @ResponseBody
     @GetMapping("/selectById")
     public Notice selectById(@RequestParam("id")Integer id){
@@ -90,6 +95,7 @@ public class NoticeController {
     }
 
 
+    @ApiOperation(value = "查询未签到学生")
     @ResponseBody
     @GetMapping("/selectStudent")
     public List<Know> selectStudent(@RequestParam("id")Integer id){
@@ -100,6 +106,7 @@ public class NoticeController {
 
     }
 
+    @ApiOperation(value = "删除通知")
     @ResponseBody
     @DeleteMapping("/deleteById")
     public List<Notice> delete(@RequestParam("id")Integer id){
@@ -108,6 +115,7 @@ public class NoticeController {
         return notices;
     }
 
+    @ApiOperation(value = "更新通知")
     @ResponseBody
     @PutMapping("/updateById")
     public List<Notice> update(Notice notice, HttpServletRequest request){
@@ -121,6 +129,7 @@ public class NoticeController {
     }
 
 
+    @ApiOperation(value = "新增通知")
     @ResponseBody
     @PostMapping("/insert")
     public List<Notice> insert(Notice notice,HttpServletRequest request){

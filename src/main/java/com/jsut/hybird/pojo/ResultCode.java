@@ -1,5 +1,7 @@
 package com.jsut.hybird.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import java.io.Serializable;
@@ -9,8 +11,11 @@ import java.io.Serializable;
  * @Date: 2021/1/22 16:43
  */
 @EnableAutoConfiguration
+@ApiModel(value = "响应类")
 public class ResultCode implements Serializable {
+    @ApiModelProperty(value = "响应码")
     private Integer code;
+    @ApiModelProperty(value = "响应消息")
     private String message;
 
 

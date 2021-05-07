@@ -5,6 +5,8 @@ import com.jsut.hybird.pojo.Dom;
 import com.jsut.hybird.pojo.ResultCode;
 import com.jsut.hybird.service.BookService;
 import com.jsut.hybird.utils.Time;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -18,6 +20,7 @@ import java.util.List;
  * @Author: ZhangMinCong
  * @Date: 2021/3/3 12:12
  */
+@Api(value = "图书管理")
 @Slf4j
 @Controller
 @EnableAutoConfiguration
@@ -29,6 +32,7 @@ public class BookController {
     private BookService bookService;
 
 
+    @ApiOperation(value = "根据条形码查图书")
     @ResponseBody
     @PostMapping("/selectCode")
     public ResultCode selectCode(@RequestParam("code")String code){
@@ -41,6 +45,7 @@ public class BookController {
 
     }
 
+    @ApiOperation(value = "根据id查图书")
     @ResponseBody
     @GetMapping("/selectById")
     public Book selectById(@RequestParam("id")Integer id){
@@ -48,6 +53,8 @@ public class BookController {
         return book;
     }
 
+
+    @ApiOperation(value = "插入图书")
     @ResponseBody
     @PostMapping("/insert")
     public List<Book> insert(Book book){
@@ -57,6 +64,7 @@ public class BookController {
 
     }
 
+    @ApiOperation(value = "查询所有图书")
     @ResponseBody
     @GetMapping("/selectAll")
     public List<Book> selectAll(){
@@ -65,6 +73,7 @@ public class BookController {
         return books;
     }
 
+    @ApiOperation(value = "根据id更新图书")
     @ResponseBody
     @PutMapping("/updateById")
     public List<Book> updateById(Book book){
@@ -74,6 +83,7 @@ public class BookController {
     }
 
 
+    @ApiOperation(value = "根据id删除图书")
     @ResponseBody
     @DeleteMapping("/deleteById")
     public List<Book> deleteById(@RequestParam("id") Integer id){
@@ -84,6 +94,7 @@ public class BookController {
 
 
 
+    @ApiOperation(value = "查借书人")
     @ResponseBody
     @GetMapping("/selectBroswer")
     public List<Book>  selectBroswer(@RequestParam("bookName")String bookName){
@@ -93,6 +104,7 @@ public class BookController {
     }
 
 
+    @ApiOperation(value = "续期")
     @ResponseBody
     @PutMapping("/updateTime")
     public ResultCode updateTime(@RequestParam("bookName")String bookName,@RequestParam("studentName")String studentName,@RequestParam("time")String time){

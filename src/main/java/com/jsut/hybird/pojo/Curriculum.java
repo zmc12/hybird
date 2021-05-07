@@ -1,5 +1,7 @@
 package com.jsut.hybird.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import java.io.Serializable;
@@ -9,11 +11,13 @@ import java.io.Serializable;
  * @date 2021/1/20 16:11
  */
 @EnableAutoConfiguration
-
+@ApiModel(value = "课程表类")
 public class Curriculum implements Serializable {
 
     private Integer id;
+    @ApiModelProperty(value = "班级")
     private String grade;
+    @ApiModelProperty(value = "学期")
     private String term;
 
     private String cur11;

@@ -8,6 +8,8 @@ import com.jsut.hybird.pojo.Score;
 import com.jsut.hybird.pojo.Student;
 import com.jsut.hybird.service.ScoreService;
 import com.jsut.hybird.service.StudentService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -25,6 +27,8 @@ import java.util.List;
  * @Author: ZhangMinCong
  * @Date: 2021/3/2 20:26
  */
+
+@Api(value = "成绩管理")
 @Slf4j
 @Controller
 @EnableAutoConfiguration
@@ -38,6 +42,8 @@ public class ScoreController {
     @Autowired
     private StudentService studentService;
 
+
+    @ApiOperation(value = "查询成绩")
     @ResponseBody
     @GetMapping("/selectById")
     public Score selectById(@RequestParam("id")Integer id){
@@ -46,6 +52,7 @@ public class ScoreController {
     }
 
 
+    @ApiOperation(value = "查询所有成绩")
     @ResponseBody
     @GetMapping("/selectAll")
     public List<Score> selectAll(){
@@ -54,6 +61,7 @@ public class ScoreController {
         return scores;
     }
 
+    @ApiOperation(value = "更新成绩")
     @ResponseBody
     @PutMapping("/updateById")
     public List<Score> updateById(Score score){
@@ -62,6 +70,7 @@ public class ScoreController {
     }
 
 
+    @ApiOperation(value = "删除成绩")
     @ResponseBody
     @DeleteMapping("/deleteById")
     public List<Score> deleteById(@RequestParam("id") Integer id){
@@ -70,6 +79,7 @@ public class ScoreController {
         return scores;
     }
 
+    @ApiOperation(value = "根据grade查询班级学生")
     @ResponseBody
     @GetMapping("/selectStudent")
     public List<Student> selectByGrade(@RequestParam("grade")String grade){
@@ -78,6 +88,7 @@ public class ScoreController {
         return students;
     }
 
+    @ApiOperation(value = "新增成绩")
     @ResponseBody
     @PostMapping("/insert")
     public ResultCode insert(List<Score> scores)  {
@@ -94,6 +105,7 @@ public class ScoreController {
     }
 
 
+    @ApiOperation(value = "根据grade、subject查成绩")
     @ResponseBody
     @GetMapping("/selectScore")
     public List<Score> selectScore(@RequestParam("grade")String grade,@RequestParam("subject")String subject){
@@ -103,6 +115,7 @@ public class ScoreController {
     }
 
 
+    @ApiOperation(value = "查询所有课程")
     @ResponseBody
     @GetMapping("/selectSubject")
     public List<Score> selectScore(){
@@ -111,6 +124,7 @@ public class ScoreController {
         return scoreList;
     }
 
+    @ApiOperation(value = "根据姓名查询成绩")
     @ResponseBody
     @GetMapping("/selectByName")
     public List<Score> selectByName(HttpServletRequest request){

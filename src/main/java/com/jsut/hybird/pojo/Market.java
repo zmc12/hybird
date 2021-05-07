@@ -1,5 +1,7 @@
 package com.jsut.hybird.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -10,13 +12,17 @@ import java.io.Serializable;
  * @date 2021/1/20 16:15
  */
 @EnableAutoConfiguration
-
+@ApiModel(value = "交易市场类")
 public class Market implements Serializable {
 
     private Integer id;
+    @ApiModelProperty(value = "物品信息")
     private String text;
+    @ApiModelProperty(value = "联系方式")
     private String contact;
+    @ApiModelProperty(value = "物品图片")
     private MultipartFile file;
+    @ApiModelProperty(hidden = true)
     private String path;
 
     @Override

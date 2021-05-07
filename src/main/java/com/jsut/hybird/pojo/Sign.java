@@ -1,5 +1,7 @@
 package com.jsut.hybird.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -10,13 +12,18 @@ import java.io.Serializable;
  * @date 2021/1/20 16:20
  */
 @EnableAutoConfiguration
+@ApiModel(value = "签到类")
 public class Sign implements Serializable {
 
     private Integer id;
+    @ApiModelProperty(value = "学生姓名")
     private String name;
     //private String location;
+    @ApiModelProperty(value = "签到方式")
     private String method;
+    @ApiModelProperty(value = "签到状态")
     private String stuation;
+    @ApiModelProperty(value = "体温")
     private String temperature;
 
 

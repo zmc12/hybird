@@ -3,6 +3,8 @@ package com.jsut.hybird.controller;
 import com.jsut.hybird.pojo.Absent;
 import com.jsut.hybird.service.AbsentService;
 import com.jsut.hybird.utils.UserStudent;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -18,6 +20,7 @@ import java.util.List;
  * @Date: 2021/3/3 20:16
  */
 
+@Api(value = "请假管理")
 @Slf4j
 @Controller
 @EnableAutoConfiguration
@@ -29,6 +32,7 @@ public class AbsentController {
     private AbsentService absentService;
 
 
+    @ApiOperation(value = "根据id查成绩")
     @ResponseBody
     @GetMapping("/selectById")
     public Absent selectById(@RequestParam("id")Integer id){
@@ -36,6 +40,7 @@ public class AbsentController {
         return absent;
     }
 
+    @ApiOperation(value = "插入请假消息")
     @ResponseBody
     @PostMapping("/insert")
     public List<Absent> insert(Absent absent){
@@ -44,6 +49,8 @@ public class AbsentController {
         return absents;
     }
 
+
+    @ApiOperation(value = "查询所有请假消息")
     @ResponseBody
     @GetMapping("/selectAll")
     public List<Absent> selectAll(){
@@ -60,6 +67,7 @@ public class AbsentController {
     }
 
 
+    @ApiOperation(value = "根据id删除请假信息")
     @ResponseBody
     @DeleteMapping("/deleteById")
     public List<Absent> deleteById(@RequestParam("id") Integer id){
@@ -68,6 +76,7 @@ public class AbsentController {
         return absents;
     }
 
+    @ApiOperation(value = "根据学生姓名查成绩")
     @ResponseBody
     @GetMapping("/selectByName")
     public List<Absent> selectByName(HttpServletRequest request){
@@ -76,6 +85,8 @@ public class AbsentController {
         return absents;
     }
 
+
+    @ApiOperation(value = "根据班级查请假消息")
     @ResponseBody
     @GetMapping("/selectByGrade")
     public List<Absent> select(@RequestParam("grade")String grade){

@@ -3,6 +3,8 @@ package com.jsut.hybird.controller;
 import com.jsut.hybird.pojo.Book;
 import com.jsut.hybird.pojo.Market;
 import com.jsut.hybird.service.MarketService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -20,6 +22,8 @@ import java.util.List;
  * @Author: ZhangMinCong
  * @Date: 2021/3/3 12:34
  */
+
+@Api(value = "跳蚤市场管理")
 @Slf4j
 @Controller
 @EnableAutoConfiguration
@@ -30,6 +34,8 @@ public class MarketController {
     @Autowired
     private MarketService marketService;
 
+
+    @ApiOperation(value = "查询交易信息")
     @ResponseBody
     @GetMapping("/selectById")
     public Market selectById(@RequestParam("id")Integer id){
@@ -37,6 +43,7 @@ public class MarketController {
         return market;
     }
 
+    @ApiOperation(value = "新增交易信息")
     @ResponseBody
     @PostMapping("/insert")
     public List<Market> insert(Market market) throws IOException {
@@ -79,6 +86,7 @@ public class MarketController {
         return markets;
     }
 
+    @ApiOperation(value = "查询所有交易信息")
     @ResponseBody
     @GetMapping("/selectAll")
     public List<Market> selectAll(){
@@ -87,6 +95,7 @@ public class MarketController {
         return markets;
     }
 
+    @ApiOperation(value = "更新交易信息")
     @ResponseBody
     @PutMapping("/updateById")
     public List<Market> updateById(Market market){
@@ -95,6 +104,7 @@ public class MarketController {
     }
 
 
+    @ApiOperation(value = "删除交易信息")
     @ResponseBody
     @DeleteMapping("/deleteById")
     public List<Market> deleteById(@RequestParam("id") Integer id){
