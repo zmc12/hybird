@@ -2,6 +2,7 @@ package com.jsut.hybird.service;
 
 
 import com.jsut.hybird.pojo.Know;
+import com.jsut.hybird.pojo.Notice;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import java.util.List;
@@ -21,4 +22,6 @@ public interface KnowService {
 
 
     List<Know> selectStudent(Integer id);
+
+     void updateY(Integer id);
 }

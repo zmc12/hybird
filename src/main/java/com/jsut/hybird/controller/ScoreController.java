@@ -1,26 +1,23 @@
 package com.jsut.hybird.controller;
 
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jsut.hybird.pojo.Dom;
+
 import com.jsut.hybird.pojo.ResultCode;
 import com.jsut.hybird.pojo.Score;
 import com.jsut.hybird.pojo.Student;
 import com.jsut.hybird.service.ScoreService;
 import com.jsut.hybird.service.StudentService;
+import com.jsut.hybird.utils.UserStudent;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
-import java.util.ArrayList;
+
+import javax.servlet.http.HttpSession;
+
 import java.util.List;
 
 /**
@@ -91,7 +88,7 @@ public class ScoreController {
     @ApiOperation(value = "新增成绩")
     @ResponseBody
     @PostMapping("/insert")
-    public ResultCode insert(List<Score> scores)  {
+    public ResultCode insert(@RequestBody List<Score> scores)  {
         for(Score scoreList:scores){
             if(scoreService.ifHas(scoreList) == null){
                 scoreService.insertT(scoreList);
@@ -127,9 +124,9 @@ public class ScoreController {
     @ApiOperation(value = "根据姓名查询成绩")
     @ResponseBody
     @GetMapping("/selectByName")
-    public List<Score> selectByName(HttpServletRequest request){
-        Cookie[] cookies = request.getCookies();
-        List<Score> scores = scoreService.selectByName(cookies[0].getValue());
+    public List<Score> selectByName(HttpSession session){
+        Object name = session.getAttribute(UserStudent.Name);
+        List<Score> scores = scoreService.selectByName(name.toString());
         return scores;
     }
 }

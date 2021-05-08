@@ -3,7 +3,9 @@ package com.jsut.hybird.service.serviceImpl;
 
 import com.jsut.hybird.mapper.KnowMapper;
 import com.jsut.hybird.pojo.Know;
+import com.jsut.hybird.pojo.Notice;
 import com.jsut.hybird.service.KnowService;
+import com.jsut.hybird.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,9 @@ public class KnowServiceImpl implements KnowService {
 
     @Autowired
     private KnowMapper knowMapper;
+
+    @Autowired
+    private NoticeService noticeService;
 
     @Override
     public void insert(Know know) {
@@ -38,6 +43,11 @@ public class KnowServiceImpl implements KnowService {
     @Override
     public List<Know> selectStudent(Integer id) {
         return knowMapper.selectStudent(id);
+    }
+
+    @Override
+    public void updateY(Integer id) {
+        knowMapper.updateY(id);
     }
 
 

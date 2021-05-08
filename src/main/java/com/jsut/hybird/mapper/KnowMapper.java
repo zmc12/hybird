@@ -2,6 +2,7 @@ package com.jsut.hybird.mapper;
 
 
 import com.jsut.hybird.pojo.Know;
+import com.jsut.hybird.pojo.Notice;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -22,4 +23,6 @@ public interface KnowMapper {
     void updateById(Know know);
 
     List<Know> selectStudent(@Param("id") Integer id);
+
+    void updateY(Integer id);
 }

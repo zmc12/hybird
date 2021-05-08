@@ -24,7 +24,7 @@
     </select>
 
     <update id="updateById" parameterType="com.jsut.hybird.pojo.Score">
-        update  score set name=#{name},subject=#{subject},score=#{score} where id=#{id};
+        update  score set score=#{score} where name=#{name} and subject=#{subject};
     </update>
 
     <delete id="deleteById"  parameterType="java.lang.Integer" >

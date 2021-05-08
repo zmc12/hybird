@@ -14,8 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
+
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -73,7 +73,8 @@ public class NoticeController {
     @ResponseBody
     @PutMapping("/updateY")
     public List<Notice> updateY(@RequestParam("id") Integer id){
-        List<Notice> notices = noticeService.updateY(id);
+        knowService.updateY(id);
+        List<Notice> notices = noticeService.selectAll();
         return notices;
     }
 
@@ -118,10 +119,11 @@ public class NoticeController {
     @ApiOperation(value = "更新通知")
     @ResponseBody
     @PutMapping("/updateById")
-    public List<Notice> update(Notice notice, HttpServletRequest request){
-        Cookie[] cookies = request.getCookies();
-        notice.setName(cookies[0].getValue());
-        System.out.println(notice.toString());
+    public List<Notice> update(Notice notice, HttpSession session){
+        Object name = session.getAttribute("name");
+
+        notice.setName(UserTeacher.Name);
+        //System.out.println(notice.toString());
         List<Notice> notices = noticeService.updateById(notice);
 
 
@@ -132,10 +134,10 @@ public class NoticeController {
     @ApiOperation(value = "新增通知")
     @ResponseBody
     @PostMapping("/insert")
-    public List<Notice> insert(Notice notice,HttpServletRequest request){
-        Cookie[] cookies = request.getCookies();
+    public List<Notice> insert(Notice notice,HttpSession session){
+        Object name = session.getAttribute("name");
         for(int i=0;i<notice.getGrades().length;i++){
-            notice.setName(cookies[0].getValue());
+            notice.setName(UserTeacher.Name);
             notice.setGrade(notice.getGrades()[i]);
             noticeService.insertT(notice);
             Integer id = notice.getId();
