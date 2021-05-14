@@ -66,4 +66,9 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> selectByGrade(String grade) {
         return studentMapper.selectByGrade(grade);
     }
+
+    @Override
+    public String selectByName(String name) {
+        return studentMapper.selectByName(name);
+    }
 }

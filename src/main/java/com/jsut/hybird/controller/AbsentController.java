@@ -59,6 +59,7 @@ public class AbsentController {
         return absents;
     }
 
+    @ApiOperation(value ="审批请假")
     @ResponseBody
     @PutMapping("/updateById")
     public List<Absent> updateById(Absent absent){
@@ -92,6 +93,15 @@ public class AbsentController {
     @GetMapping("/selectByGrade")
     public List<Absent> select(@RequestParam("grade")String grade){
         List<Absent> absents = absentService.selectByGrade(grade);
+        return absents;
+    }
+
+
+    @ApiOperation(value = "根据id销假")
+    @ResponseBody
+    @GetMapping("/cancellationById")
+    public List<Absent> cancellationById(@RequestParam("id")Integer id){
+        List<Absent> absents = absentService.cancellationById(id);
         return absents;
     }
 }

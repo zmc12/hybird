@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -90,6 +92,8 @@ public class SignController {
     public ResultCode insertFinger(Sign sign){
         sign.setMethod("指纹签到");
         sign.setStuation("已签到");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        sign.setTime(df.format(new Date()));
         System.out.println(sign.toString());
         List<Sign> signs = signService.insertT(sign);
         Student student = studentService.selectByNumber(sign.getName());

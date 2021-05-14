@@ -50,4 +50,8 @@
         select  a.* from absent a,(select name from student where grade=#{grade}) b where a.name=b.name and  (result="未审批" or result="批准") order by id asc;
     </select>
 
+    <update id="cancellationById"  parameterType="java.lang.Integer" >
+        update  absent set result=#{已销假} where id=#{id};
+    </update>
+
 </mapper>

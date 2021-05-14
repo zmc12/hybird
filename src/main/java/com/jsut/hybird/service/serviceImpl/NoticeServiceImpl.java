@@ -64,8 +64,13 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
-    public List<Notice> updateY(Integer id) {
+    public void updateY(Integer id) {
         noticeMapper.updateY(id);
-        return noticeMapper.selectAll();
     }
+
+    @Override
+    public List<Notice> selectNoNotice(String name) {
+        return noticeMapper.selectNoNotice(name);
+    }
+
 }

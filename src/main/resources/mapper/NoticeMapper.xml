@@ -46,7 +46,7 @@
         update  notice set situation="已确认" where id=#{id};
     </update>
 
-    <select id="selectNoNotice" resultMap="BaseResultMap">
-        select * from notice a ,(select distinct nid from know where situation="未确认" and name=#{name}) b where a.id=b.nid
+    <select id="selectNoNotice" parameterType="java.lang.String" resultMap="BaseResultMap" >
+        select * from notice a ,(select  nid from know where situation="未确认" and name=#{name}) b where a.id=b.nid
     </select>
 </mapper>

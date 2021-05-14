@@ -3,7 +3,9 @@ package com.jsut.hybird.controller;
 import com.jsut.hybird.pojo.*;
 import com.jsut.hybird.service.KnowService;
 import com.jsut.hybird.service.NoticeService;
+import com.jsut.hybird.service.ScoreService;
 import com.jsut.hybird.service.StudentService;
+import com.jsut.hybird.utils.UserStudent;
 import com.jsut.hybird.utils.UserTeacher;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -42,39 +44,12 @@ public class NoticeController {
     private StudentService studentService;
 
 
-
-//    @ResponseBody
-//    @PostMapping("/insert")
-//    public List<Notice> insert(Notice notice){
-//        List<Notice> notices = noticeService.insertT(notice);
-//        System.out.println(notice.toString());
-//        return notices;
-//    }
-
-
-
-//    @ResponseBody
-//    @PutMapping("/updateById")
-//    public List<Notice> updateById(Notice notice){
-//        List<Notice> notices = noticeService.updateById(notice);
-//        return notices;
-//    }
-//
-//
-//    @ResponseBody
-//    @DeleteMapping("/deleteById")
-//    public List<Notice> deleteById(@RequestParam("id") Integer id){
-//        List<Notice> notices = noticeService.deleteById(id);
-//
-//        return notices;
-//    }
-
     @ApiOperation(value = "确认通知")
     @ResponseBody
     @PutMapping("/updateY")
     public List<Notice> updateY(@RequestParam("id") Integer id){
         knowService.updateY(id);
-        List<Notice> notices = noticeService.selectAll();
+        List<Notice> notices = noticeService.selectNoNotice(UserStudent.Name);
         return notices;
     }
 
@@ -150,4 +125,14 @@ public class NoticeController {
         List<Notice> notices = noticeService.selectAll();
         return notices;
     }
+
+    @ApiOperation(value = "查询本班未确认通知")
+    @ResponseBody
+    @GetMapping("/selectNoNotice")
+    public List<Notice>    selectNoNotice(){
+        List<Notice> notices = noticeService.selectNoNotice(UserStudent.Name);
+        //System.out.println(notices.toString());
+        return notices;
+    }
+
 }

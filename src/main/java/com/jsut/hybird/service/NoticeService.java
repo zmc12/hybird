@@ -12,5 +12,7 @@ import java.util.List;
 public interface NoticeService extends BaseService<Notice> {
 
 
-    public List<Notice> updateY(Integer id);
+    public void updateY(Integer id);
+
+    public List<Notice> selectNoNotice(String name);
 }

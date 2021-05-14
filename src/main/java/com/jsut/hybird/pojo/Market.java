@@ -16,7 +16,7 @@ import java.io.Serializable;
 public class Market implements Serializable {
 
     private Integer id;
-    @ApiModelProperty(value = "物品信息")
+    @ApiModelProperty(value = "物品名称")
     private String text;
     @ApiModelProperty(value = "联系方式")
     private String contact;
@@ -24,6 +24,10 @@ public class Market implements Serializable {
     private MultipartFile file;
     @ApiModelProperty(hidden = true)
     private String path;
+    @ApiModelProperty(value = "物品信息")
+    private String title;
+    @ApiModelProperty(value = "物品价格")
+    private Integer price;
 
     @Override
     public String toString() {
@@ -33,7 +37,25 @@ public class Market implements Serializable {
                 ", contact='" + contact + '\'' +
                 ", file=" + file +
                 ", path='" + path + '\'' +
+                ", title='" + title + '\'' +
+                ", price=" + price +
                 '}';
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 
     public MultipartFile getFile() {

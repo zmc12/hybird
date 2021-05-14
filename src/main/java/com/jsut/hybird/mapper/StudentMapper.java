@@ -19,4 +19,6 @@ public interface StudentMapper extends BaseMapper<Student> {
     public Student selectByNumber(String number);
 
     List<Student> selectByGrade(String grade);
+
+    String selectByName(String name);
 }

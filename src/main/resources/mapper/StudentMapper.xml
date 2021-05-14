@@ -55,4 +55,8 @@
     <select id="selectByGrade" parameterType="java.lang.String"  resultMap="BaseResultMap">
         select  <include refid="Base_Column_List" /> from student where grade=#{grade};
     </select>
+
+    <select id="selectByName" parameterType="java.lang.String"  resultType="java.lang.String">
+        select  distinct grade from student where name=#{name};
+    </select>
 </mapper>
