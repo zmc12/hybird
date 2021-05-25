@@ -28,6 +28,8 @@ public class Market implements Serializable {
     private String title;
     @ApiModelProperty(value = "物品价格")
     private Integer price;
+    @ApiModelProperty(value = "学号")
+    private String userName;
 
     @Override
     public String toString() {
@@ -39,7 +41,16 @@ public class Market implements Serializable {
                 ", path='" + path + '\'' +
                 ", title='" + title + '\'' +
                 ", price=" + price +
+                ", userName='" + userName + '\'' +
                 '}';
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getTitle() {

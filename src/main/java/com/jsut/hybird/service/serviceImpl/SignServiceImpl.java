@@ -60,4 +60,11 @@ public class SignServiceImpl implements SignService {
     public List<Sign> selectByGrade(String grade, String time) {
         return signMapper.selectByGrade(grade,time);
     }
+
+    @Override
+    public void insert1(Sign sign) {
+        signMapper.insert1(sign);
+    }
+
+
 }

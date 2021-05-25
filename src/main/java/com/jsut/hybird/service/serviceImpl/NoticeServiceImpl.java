@@ -73,4 +73,9 @@ public class NoticeServiceImpl implements NoticeService {
         return noticeMapper.selectNoNotice(name);
     }
 
+    @Override
+    public List<Notice> selectNotice(String name) {
+        return noticeMapper.selectNotice(name);
+    }
+
 }

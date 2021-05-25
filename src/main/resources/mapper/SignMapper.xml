@@ -52,4 +52,7 @@
         select a.*  from sign a,(select name from student  where grade=#{grade}) b where a.name=b.name and  a.time=#{time};
     </select>
 
+    <insert id="insert1" parameterType="com.jsut.hybird.pojo.Sign">
+        insert into sign(name,method,time) values (#{name},#{method},#{time});
+    </insert>
 </mapper>

@@ -49,4 +49,10 @@
     <select id="selectNoNotice" parameterType="java.lang.String" resultMap="BaseResultMap" >
         select * from notice a ,(select  nid from know where situation="未确认" and name=#{name}) b where a.id=b.nid
     </select>
+
+    <select id="selectNotice" parameterType="java.lang.String" resultMap="BaseResultMap" >
+        select * from notice a ,(select  nid from know where situation="已确认" and name=#{name}) b where a.id=b.nid
+    </select>
+
+
 </mapper>

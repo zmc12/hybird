@@ -68,8 +68,13 @@ public class AbsentServiceImpl implements AbsentService {
     }
 
     @Override
-    public List<Absent> cancellationById(Integer id) {
+    public void cancellationById(Integer id) {
         absentMapper.cancellationById(id);
+    }
+
+    @Override
+    public List<Absent> postById(Integer id) {
+        absentMapper.postById(id);
         List<Absent> absents = absentMapper.selectByName(UserStudent.Name);
         return absents;
     }

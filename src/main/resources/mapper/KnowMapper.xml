@@ -29,8 +29,8 @@
         select <include refid="Base_Column_List"/> from know  where situation="未确认" and nid=#{id} order by id desc;
     </select>
 
-    <update id="updateY" parameterType="java.lang.Integer">
-        update know set situation="已确认" where nid=#{id};
+    <update id="updateY" >
+        update know set situation="已确认" where nid=#{id} and name=#{name};
     </update>
 
 </mapper>

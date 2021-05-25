@@ -19,4 +19,6 @@ public interface AbsentMapper extends BaseMapper<Absent> {
     List<Absent> selectByGrade(String grade);
 
     void cancellationById(Integer id);
+
+    void postById(Integer id);
 }

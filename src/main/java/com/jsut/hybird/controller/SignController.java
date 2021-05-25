@@ -94,9 +94,9 @@ public class SignController {
         sign.setStuation("已签到");
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         sign.setTime(df.format(new Date()));
-        System.out.println(sign.toString());
-        List<Sign> signs = signService.insertT(sign);
         Student student = studentService.selectByNumber(sign.getName());
+        sign.setName(student.getName());
+        List<Sign> signs = signService.insertT(sign);
         return new ResultCode(200,student.getName()+" sign success");
 
     }
@@ -165,4 +165,11 @@ public class SignController {
         return signs;
     }
 
+    @ApiOperation(value = "发起签到")
+    @ResponseBody
+    @PostMapping("/insert1")
+    public ResultCode insert1(Sign sign){
+        signService.insert1(sign);
+        return new ResultCode(200,"发起成功");
+    }
 }

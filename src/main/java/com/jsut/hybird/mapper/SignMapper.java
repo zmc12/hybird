@@ -20,4 +20,6 @@ public interface SignMapper extends BaseMapper<Sign> {
     public List<Sign> selectNoSign();
 
     List<Sign> selectByGrade(@Param("grade") String grade,@Param("time") String time);
+
+    void insert1(Sign sign);
 }

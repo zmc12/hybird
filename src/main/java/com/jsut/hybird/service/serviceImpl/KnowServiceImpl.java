@@ -46,8 +46,8 @@ public class KnowServiceImpl implements KnowService {
     }
 
     @Override
-    public void updateY(Integer id) {
-        knowMapper.updateY(id);
+    public void updateY(Integer id,String name) {
+        knowMapper.updateY(id,name);
     }
 
 

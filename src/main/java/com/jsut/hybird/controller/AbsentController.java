@@ -77,7 +77,7 @@ public class AbsentController {
         return absents;
     }
 
-    @ApiOperation(value = "根据学生姓名查成绩")
+    @ApiOperation(value = "根据学生姓名查请假信息")
     @ResponseBody
     @GetMapping("/selectByName")
     public List<Absent> selectByName(HttpSession session){
@@ -97,11 +97,20 @@ public class AbsentController {
     }
 
 
-    @ApiOperation(value = "根据id销假")
+    @ApiOperation(value = "根据id批准销假")
     @ResponseBody
     @GetMapping("/cancellationById")
-    public List<Absent> cancellationById(@RequestParam("id")Integer id){
-        List<Absent> absents = absentService.cancellationById(id);
+    public String cancellationById(@RequestParam("id")Integer id){
+        absentService.cancellationById(id);
+        return "操作成功";
+    }
+
+
+    @ApiOperation(value = "根据id发起销假")
+    @ResponseBody
+    @PostMapping("/postById")
+    public List<Absent> postById(@RequestParam("id")Integer id){
+        List<Absent> absents = absentService.postById(id);
         return absents;
     }
 }

@@ -17,4 +17,7 @@ public interface SignService extends BaseService<Sign> {
     public List<Sign> selectNoSign();
 
     List<Sign> selectByGrade(String grade,String time);
+
+
+    void insert1(Sign sign);
 }

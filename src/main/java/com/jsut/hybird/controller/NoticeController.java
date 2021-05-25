@@ -48,7 +48,7 @@ public class NoticeController {
     @ResponseBody
     @PutMapping("/updateY")
     public List<Notice> updateY(@RequestParam("id") Integer id){
-        knowService.updateY(id);
+        knowService.updateY(id,UserStudent.Name);
         List<Notice> notices = noticeService.selectNoNotice(UserStudent.Name);
         return notices;
     }
@@ -106,7 +106,7 @@ public class NoticeController {
     }
 
 
-    @ApiOperation(value = "新增通知")
+    @ApiOperation(value = "新增需确认通知")
     @ResponseBody
     @PostMapping("/insert")
     public List<Notice> insert(Notice notice,HttpSession session){
@@ -132,6 +132,29 @@ public class NoticeController {
     public List<Notice>    selectNoNotice(){
         List<Notice> notices = noticeService.selectNoNotice(UserStudent.Name);
         //System.out.println(notices.toString());
+        return notices;
+    }
+
+
+    @ApiOperation(value = "查询本班已确认通知")
+    @ResponseBody
+    @GetMapping("/selectNotice")
+    public List<Notice>  selectNotice(){
+        List<Notice> notices = noticeService.selectNotice(UserStudent.Name);
+        return notices;
+    }
+
+
+    @ApiOperation(value = "新增无需确认通知")
+    @ResponseBody
+    @PostMapping("/insert1")
+    public List<Notice> insert1(Notice notice){
+        for(int i=0;i<notice.getGrades().length;i++){
+            notice.setName(UserTeacher.Name);
+            notice.setGrade(notice.getGrades()[i]);
+            noticeService.insertT(notice);
+        }
+        List<Notice> notices = noticeService.selectAll();
         return notices;
     }
 

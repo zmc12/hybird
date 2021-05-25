@@ -24,5 +24,5 @@ public interface KnowMapper {
 
     List<Know> selectStudent(@Param("id") Integer id);
 
-    void updateY(Integer id);
+    void updateY(@Param("id")Integer id,@Param("name")String name);
 }

@@ -50,4 +50,9 @@ public class MarketServiceImpl implements MarketService {
         List<Market> markets = marketMapper.selectAll();
         return markets;
     }
+
+    @Override
+    public List<Market> selectByUN(String userName) {
+        return marketMapper.selectByUN(userName);
+    }
 }

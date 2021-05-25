@@ -15,5 +15,7 @@ public interface AbsentService extends BaseService<Absent> {
 
     List<Absent> selectByGrade(String grade);
 
-    List<Absent> cancellationById(Integer id);
+    void cancellationById(Integer id);
+
+    List<Absent> postById(Integer id);
 }

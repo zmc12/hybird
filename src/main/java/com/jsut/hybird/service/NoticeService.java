@@ -15,4 +15,6 @@ public interface NoticeService extends BaseService<Notice> {
     public void updateY(Integer id);
 
     public List<Notice> selectNoNotice(String name);
+
+    List<Notice> selectNotice(String name);
 }

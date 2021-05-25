@@ -17,4 +17,6 @@ public interface NoticeMapper extends BaseMapper<Notice> {
     public void updateY(Integer id);
 
     public List<Notice> selectNoNotice(String name);
+
+    List<Notice> selectNotice(String name);
 }

@@ -23,5 +23,5 @@ public interface KnowService {
 
     List<Know> selectStudent(Integer id);
 
-     void updateY(Integer id);
+     void updateY(Integer id,String name);
 }
