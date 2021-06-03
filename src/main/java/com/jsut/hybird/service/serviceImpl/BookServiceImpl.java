@@ -62,5 +62,15 @@ public class BookServiceImpl implements BookService {
         return bookMapper.selectByName(bookName);
     }
 
+    @Override
+    public void borrowBook(String bookName, String studentName, String time) {
+        bookMapper.borrowBook(bookName,studentName,time);
+    }
+
+    @Override
+    public List<Book> selectMine(String studentName) {
+        return bookMapper.selectMine(studentName);
+    }
+
 
 }

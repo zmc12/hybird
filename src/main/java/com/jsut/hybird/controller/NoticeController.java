@@ -110,7 +110,6 @@ public class NoticeController {
     @ResponseBody
     @PostMapping("/insert")
     public List<Notice> insert(Notice notice,HttpSession session){
-        Object name = session.getAttribute("name");
         for(int i=0;i<notice.getGrades().length;i++){
             notice.setName(UserTeacher.Name);
             notice.setGrade(notice.getGrades()[i]);

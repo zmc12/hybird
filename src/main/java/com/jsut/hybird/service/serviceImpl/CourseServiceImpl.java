@@ -47,4 +47,9 @@ public class CourseServiceImpl implements CourseService {
     public void concat(String name,String subject) {
         courseMapper.concat(name,subject);
     }
+
+    @Override
+    public List<Course> selectMine(String name) {
+        return courseMapper.selectMine(name);
+    }
 }

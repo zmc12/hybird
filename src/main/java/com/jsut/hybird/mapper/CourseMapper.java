@@ -16,4 +16,6 @@ public interface CourseMapper extends BaseMapper<Course> {
 
 
     void concat(@Param("name") String name,@Param("subject") String subject);
+
+    List<Course> selectMine(String name);
 }

@@ -14,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,6 +39,10 @@ public class BookController {
     @PostMapping("/selectCode")
     public ResultCode selectCode(@RequestParam("code")String code){
         Book book = bookService.selectCode(code);
+        book.setStudentName("龚瑶");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        book.setTime(df.format(new Date()));
+        List<Book> books = bookService.updateById(book);
         if(book!=null){
             return new ResultCode(200,book.getBookName());
         }else {
@@ -121,4 +127,25 @@ public class BookController {
 
     }
 
+
+
+    @ApiOperation(value = "借书")
+    @ResponseBody
+    @PutMapping("/borrowBook")
+    public ResultCode borrowBook(@RequestParam("bookName")String bookName,@RequestParam("studentName")String studentName){
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String time = df.format(new Date());
+        bookService.borrowBook(bookName,studentName,time);
+        return new ResultCode(200,"借书成功");
+    }
+
+
+    @ApiOperation(value = "查询自己借阅的图书")
+    @ResponseBody
+    @GetMapping("/selectMine")
+    public List<Book> selectMine(@RequestParam("studentName")String studentName){
+        List<Book> books = bookService.selectMine(studentName);
+
+        return books;
+    }
 }

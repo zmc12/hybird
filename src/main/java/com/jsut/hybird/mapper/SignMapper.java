@@ -22,4 +22,14 @@ public interface SignMapper extends BaseMapper<Sign> {
     List<Sign> selectByGrade(@Param("grade") String grade,@Param("time") String time);
 
     void insert1(Sign sign);
+
+
+    List<String> selectTime();
+
+    void updateById(Integer id);
+
+
+    List<Sign> selectStudentNoSign(String name);
+
+    List<Sign> selectStudentSign(String name);
 }

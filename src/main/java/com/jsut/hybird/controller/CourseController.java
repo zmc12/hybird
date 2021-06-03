@@ -48,6 +48,15 @@ public class CourseController {
     public ResultCode concat(@RequestParam("name")String name, @RequestParam("subject")String subject){
         courseService.concat(name,subject);
 
-        return new ResultCode(200,"完成选课");
+        return new ResultCode(200,"成功");
+    }
+
+
+    @ApiOperation(value = "我的选课")
+    @ResponseBody
+    @GetMapping("/selectMine")
+    public List<Course> selectMine(@RequestParam("name")String name){
+
+        return courseService.selectMine(name);
     }
 }

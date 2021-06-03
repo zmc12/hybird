@@ -12,4 +12,6 @@ import java.util.List;
 public interface CourseService extends BaseService<Course> {
 
     void concat(String name,String subject);
+
+    List<Course> selectMine(String name);
 }

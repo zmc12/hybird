@@ -51,10 +51,10 @@
     </select>
 
     <update id="cancellationById"  parameterType="java.lang.Integer" >
-        update  absent set result=#{已销假} where id=#{id};
+        update  absent set result="已销假" where id=#{id};
     </update>
 
     <update id="postById"  parameterType="java.lang.Integer" >
-        update  absent set result=#{未销假} where id=#{id};
+        update  absent set result="未销假" where id=#{id};
     </update>
 </mapper>

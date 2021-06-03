@@ -19,4 +19,9 @@ public interface BookService extends BaseService<Book> {
 
 
     List<Book> selectByName(String bookName);
+
+    void borrowBook(String bookName, String studentName, String time);
+
+    List<Book> selectMine(String studentName);
+
 }

@@ -20,4 +20,13 @@ public interface SignService extends BaseService<Sign> {
 
 
     void insert1(Sign sign);
+
+
+    List<String> selectTime();
+
+    void updateById(Integer id);
+
+    List<Sign> selectStudentNoSign(String name);
+
+    List<Sign> selectStudentSign(String name);
 }

@@ -3,6 +3,8 @@ package com.jsut.hybird.pojo;
 import io.swagger.annotations.ApiModel;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
+import java.io.Serializable;
+
 /**
  * @Author: ZhangMinCong
  * @Date: 2021/5/25 12:45
@@ -10,12 +12,15 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 @EnableAutoConfiguration
 @ApiModel(value = "选课类")
-public class Course {
+public class Course implements Serializable {
 
     private Integer id;
     private String names;
     private String subject;
     private String name;
+    private String teacher;
+    private String point;
+    private Integer flag;
 
     @Override
     public String toString() {
@@ -24,9 +29,35 @@ public class Course {
                 ", names='" + names + '\'' +
                 ", subject='" + subject + '\'' +
                 ", name='" + name + '\'' +
+                ", teacher='" + teacher + '\'' +
+                ", point='" + point + '\'' +
+                ", flag=" + flag +
                 '}';
     }
 
+    public Integer getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Integer flag) {
+        this.flag = flag;
+    }
+
+    public String getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
+    }
+
+    public String getPoint() {
+        return point;
+    }
+
+    public void setPoint(String point) {
+        this.point = point;
+    }
 
     public String getName() {
         return name;

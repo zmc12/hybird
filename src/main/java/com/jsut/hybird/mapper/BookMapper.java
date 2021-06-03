@@ -20,4 +20,10 @@ public interface BookMapper extends BaseMapper<Book> {
 
 
     List<Book> selectByName(String bookName);
+
+
+    void borrowBook(@Param("bookName") String bookName,@Param("studentName") String studentName,@Param("time") String time);
+
+
+    List<Book> selectMine(String studentName);
 }

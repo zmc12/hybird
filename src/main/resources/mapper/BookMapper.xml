@@ -31,7 +31,7 @@
         delete from book where id=#{id};
     </delete>
     <update id="updateById" parameterType="com.jsut.hybird.pojo.Book">
-        update  book set amount=#{amount}, book_name=#{bookName} where id=#{id};
+        update  book set amount=#{amount}, book_name=#{bookName},studentName=#{studentName},time=#{time} where id=#{id};
     </update>
 
     <select id="selectById" resultMap="BaseResultMap">
@@ -48,4 +48,13 @@
     <update id="updateTime" parameterType="java.lang.String">
         update  book set time=#{time} where book_name=#{bookName} and studentName=#{studentName};
     </update>
+
+
+    <update id="borrowBook" parameterType="java.lang.String">
+        update  book set studentName=#{studentName},time=#{time} where book_name=#{bookName};
+    </update>
+
+    <select id="selectMine" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from book where studentName=#{studentName};
+    </select>
 </mapper>

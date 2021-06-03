@@ -1,6 +1,7 @@
 package com.jsut.hybird.controller;
 
 import com.jsut.hybird.pojo.Absent;
+import com.jsut.hybird.pojo.ResultCode;
 import com.jsut.hybird.service.AbsentService;
 import com.jsut.hybird.utils.UserStudent;
 import io.swagger.annotations.Api;
@@ -100,9 +101,9 @@ public class AbsentController {
     @ApiOperation(value = "根据id批准销假")
     @ResponseBody
     @GetMapping("/cancellationById")
-    public String cancellationById(@RequestParam("id")Integer id){
+    public ResultCode cancellationById(@RequestParam("id")Integer id){
         absentService.cancellationById(id);
-        return "操作成功";
+        return new ResultCode(200,"操作成功");
     }
 
 

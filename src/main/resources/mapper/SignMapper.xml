@@ -44,8 +44,8 @@
         delete from sign where id=#{id};
     </delete>
 
-    <update id="updateById" parameterType="com.jsut.hybird.pojo.Sign">
-           update sign set stuation=#{已签到} where id={id};
+    <update id="updateById" parameterType="java.lang.Integer">
+           update sign set stuation="已签到" where id=#{id};
     </update>
 
     <select id="selectByGrade" resultMap="BaseResultMap" parameterType="java.lang.String">
@@ -53,6 +53,20 @@
     </select>
 
     <insert id="insert1" parameterType="com.jsut.hybird.pojo.Sign">
-        insert into sign(name,method,time) values (#{name},#{method},#{time});
+        insert into sign(name,method,time,stuation) values (#{name},#{method},#{time},#{stuation});
     </insert>
+
+
+    <select id="selectTime" resultType="java.lang.String">
+        select distinct time from sign;
+    </select>
+
+    <select id="selectStudentNoSign" resultMap="BaseResultMap">
+        select * from sign where name=#{name} and stuation="未签到";
+    </select>
+
+
+    <select id="selectStudentSign" resultMap="BaseResultMap">
+        select * from sign where name=#{name} and stuation="已签到";
+    </select>
 </mapper>

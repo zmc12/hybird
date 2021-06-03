@@ -66,5 +66,25 @@ public class SignServiceImpl implements SignService {
         signMapper.insert1(sign);
     }
 
+    @Override
+    public List<String> selectTime() {
+        return signMapper.selectTime();
+    }
+
+    @Override
+    public void updateById(Integer id) {
+        signMapper.updateById(id);
+    }
+
+    @Override
+    public List<Sign> selectStudentNoSign(String name) {
+        return signMapper.selectStudentNoSign(name);
+    }
+
+    @Override
+    public List<Sign> selectStudentSign(String name) {
+        return signMapper.selectStudentSign(name);
+    }
+
 
 }
